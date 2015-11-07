@@ -56,3 +56,13 @@ exports.postContact = function(req, res) {
     res.redirect('/contact');
   });
 };
+
+/**
+ * GET /contact
+ * Contact form page.
+ */
+exports.inputNeuralNet = function(req, res) {
+  res.render('input', {
+    title: 'Input'
+  });
+};
