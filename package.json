@@ -57,6 +57,7 @@
     "request": "^2.65.0",
     "serve-favicon": "^2.3.0",
     "stripe": "^4.0.0",
+    "synaptic": "^1.0.2",
     "tumblr.js": "^0.0.7",
     "twilio": "^2.5.2",
     "twit": "^2.1.1",
