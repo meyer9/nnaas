@@ -105,6 +105,7 @@ exports.trainNetwork = function (req, res) {
 			res.sendStatus(403);
 		}
 		else {
+			console.log(apiKey);
 			networkObj.network = Synaptic.Network.fromJSON(networkObj.network);
 			var trainingSet = req.body.trainingSet;
 			var options = req.body.options;
