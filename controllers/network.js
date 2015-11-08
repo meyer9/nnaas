@@ -109,7 +109,8 @@ exports.trainNetwork = function (req, res) {
 			var trainingSet = req.body.trainingSet;
 			var options = req.body.options;
 			var trainer = new Synaptic.Trainer(networkObj.network, options);
-			var out = trainer.XOR();
+			var out = trainer.train(trainingSet);
+			networkObj.network = networkObj.network.toJSON();
 			networkObj.save();
 			res.send(out);
 		}
