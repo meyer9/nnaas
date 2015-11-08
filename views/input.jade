@@ -12,8 +12,11 @@ block content
       label(class='control-label', for='UserInput', style='margin-right: 5px;') Input: 
           input(type='number', name='inputNeurons', min'1', max='10')
       br
-      label(class='control-label', for='UserOutput', style='margin-rigth: 5px;') Output: 
+      label(class='control-label', for='UserOutput', style='margin-right: 5px;') Output: 
           input(type='number', name='outputNeurons', min'1', max='10')
+      br
+      label(class='control-label', for='Number of Neurons in hidden layer', style='margin-right: 5px;') Number of Neurons: 
+          input(type='number', name='neuronsInHiddenLayer', min'1', max='10')
       br
       label(class='control-label', for='What type of neuron', style='margin-right: 5px;') Neuron Type:
       select(name='neuronType')
@@ -30,7 +33,7 @@ block content
       br
       br
       label(class='control-label', for='What is neuron name', style='margin-right 5px;') Neuron Name: 
-        input(type='networkName', name=)
+        input(type='text', name='networkName')
       br
       br
       input(type='submit')
