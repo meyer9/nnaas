@@ -13,10 +13,20 @@ exports.postNewNetwork = function (req, res) {
 	var networkType = req.body.networkType;
 	var networkName = req.body.networkName;
 	var neuronsInHiddenLayer = req.body.neuronsInHiddenLayer;
-	
-	var network = createNetwork(inputNeurons,neuronsInHiddenLayer,outputNeurons,hiddenLayers);
+	var userId = req.user.id;
 
-	res.send([hiddenLayers, inputNeurons, outputNeurons, neuronType, networkType, networkName, neuronsInHiddenLayer]);
+	var neuralNetwork = createNetwork(inputNeurons,neuronsInHiddenLayer,outputNeurons,hiddenLayers);
+
+	var network = new Network({
+		apiKey: getAPIKey(16),
+		network: neuralNetwork.toJSON(),
+		name: networkName,
+		userId: userId
+	});
+
+	network.save();
+
+	res.send(network);
 }
 
 /**
@@ -27,4 +37,13 @@ exports.getNewNetwork = function (req, res) {
 	res.render('input',{
 		title: 'input'
 	});
+}
+
+var getAPIKey = function (length) {
+	possible = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+	key = ""
+	for (var i = 0; i < length; i++) {
+		key += possible.charAt(Math.floor(Math.random() * possible.length));
+	}
+	return key;
 }

@@ -5,7 +5,8 @@ var schema = mongoose.Schema
 var networkSchema = new schema({
 	apiKey: String,
 	network: Object,
-	name: String
+	name: String,
+	userId: mongoose.Types.ObjectId
 });
 
 module.exports = mongoose.model('Network', networkSchema);
