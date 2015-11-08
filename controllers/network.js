@@ -50,15 +50,20 @@ exports.getNewNetwork = function (req, res) {
 * shows networks of user in a table
 */
 exports.getNetworks = function (req, res) {
-	var userid = req.user.id;
-	Network.find({userId: userid}, function (err, networks) {
-		if (!err) {
-			res.json(networks);
-		} 
-		else {
-			res.sendStatus(403);
-		}
-	});
+	if (req.user) {
+		var userid = req.user.id;
+		Network.find({userId: userid}, function (err, networks) {
+			if (!err) {
+				res.json(networks);
+			} 
+			else {
+				res.sendStatus(403);
+			}
+		});
+	}
+	else {
+		res.sendStatus(403);
+	}
 }
 
 /**
