@@ -118,7 +118,7 @@ app.post('/account/delete', passportConf.isAuthenticated, userController.postDel
 app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
 app.get('/input', networkController.getNewNetwork);
 app.post('/input', networkController.postNewNetwork);
-app.get('/networks',networkController.getNetworks);
+app.get('/networks/json',networkController.getNetworks);
 app.post('/networks/delete', networkController.deleteNetwork);
 
 /**
