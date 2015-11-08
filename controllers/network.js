@@ -4,7 +4,7 @@ var util = require('../util.js');
 
 /**
 * POST /input
-* Adds a new network to the db 
+* Adds a new network to the db
 */
 exports.postNewNetwork = function (req, res) {
 	if (req.user) {
@@ -47,7 +47,7 @@ exports.getNewNetwork = function (req, res) {
 
 /**
 * GET /networks
-* shows networks of user in a table
+* shows json of networks of user in a table
 */
 exports.getNetworks = function (req, res) {
 	if (req.user) {
@@ -55,7 +55,7 @@ exports.getNetworks = function (req, res) {
 		Network.find({userId: userid}, function (err, networks) {
 			if (!err) {
 				res.json(networks);
-			} 
+			}
 			else {
 				res.sendStatus(403);
 			}
@@ -82,6 +82,13 @@ exports.deleteNetwork = function (req, res) {
 	});
 
 }
+
+
+exports.showNetworks = function(req, res) {
+	res.render('networks',{
+		title: 'networks'
+	});
+};
 
 /**
 * POST /networks/train
