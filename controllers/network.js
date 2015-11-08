@@ -1,4 +1,5 @@
 var Network = require('../models/Network');
+var Synaptic = require("synaptic");
 var createNetwork = require('../NeuralNet.js');
 var util = require('../util.js');
 
@@ -99,15 +100,17 @@ exports.showNetworks = function(req, res) {
 exports.trainNetwork = function (req, res) {
 	var apiKey = req.body.apiKey;
 	var query = Network.where({apiKey: apiKey});
-	query.findOne(function (err, network){
+	query.findOne(function (err, networkObj){
 		if (err) {
 			res.sendStatus(403);
 		}
 		else {
+			networkObj.network = Synaptic.Network.fromJSON(networkObj.network);
 			var trainingSet = req.body.trainingSet;
-			var trainer = Synapse.trainer(network);
+			var trainer = new Synaptic.Trainer(networkObj.network);
 			trainer.train(trainingSet);
-			network.save();
+			networkObj.save();
+			res.send("SUCCESS!");
 		}
 	});
 }
