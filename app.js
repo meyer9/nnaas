@@ -119,6 +119,7 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
 app.get('/input', networkController.getNewNetwork);
 app.post('/input', networkController.postNewNetwork);
 app.get('/networks',networkController.getNetworks);
+app.post('/networks/delete', networkController.deleteNetwork);
 
 /**
  * API examples routes.
