@@ -78,3 +78,22 @@ exports.deleteNetwork = function (req, res) {
 
 }
 
+/**
+* POST /networks/train
+* trains a network
+*/
+exports.trainNetwork = function (req, res) {
+	var apiKey = req.body.apiKey;
+	var query = Network.where({apiKey: apiKey});
+	query.findOne(function (err, network){
+		if (err) {
+			res.sendStatus(403);
+		}
+		else {
+			var trainingSet = req.body.trainingSet;
+			var trainer = Synapse.trainer(network);
+			trainer.train(trainingSet);
+			network.save();
+		}
+	});
+}
