@@ -2,12 +2,9 @@ var mongoose = require('mongoose');
 var synaptic = require('synaptic');
 
 var schema = mongoose.Schema
-var networkSchema = new Schema({
+var networkSchema = new schema({
 	apiKey: String,
-	network: {
-		neurons: [synaptic.Neuron],
-		connections: [synaptic.Connection]
-	},
+	network: Object,
 	name: String
 });
 
