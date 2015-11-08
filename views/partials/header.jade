@@ -6,10 +6,13 @@
     ul.nav.navbar-nav
       li(class=title=='Home'?'active':undefined)
         a(href='/') Home
-      li(class=title=='Create New Network'?'active':undefined)
-        a(href='/input') Input
-      li(class=title=='Your Networks'?'active':undefined)
-        a(href='/networks') Networks
+      if user
+        li(class=title=='Create New Network'?'active':undefined)
+          a(href='/input') Input
+        li(class=title=='Your Networks'?'active':undefined)
+          a(href='/networks') Networks
+      li
+        a(href='/abrokenlink') A broken link!
     ul.nav.navbar-nav.navbar-right
       if !user
         li(class=title=='Login'?'active':undefined)

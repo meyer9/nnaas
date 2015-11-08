@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <title>Neuromancer Demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="demo.js"></script>
+  </head>
+  <body>
+    Training network with training set:
+    <table>
+      <tr>
+        <th>
+          Input 1
+        </th>
+        <th>
+          Input 2
+        </th>
+        <th>
+          Output
+        </th>
+      </tr>
+      <tr>
+        <td>
+          0
+        </td>
+        <td>
+          0
+        </td>
+        <td>
+          0
+        </td>
+      </tr>
+      <tr>
+        <td>
+          1
+        </td>
+        <td>
+          0
+        </td>
+        <td>
+          1
+        </td>
+      </tr>
+      <tr>
+        <td>
+          0
+        </td>
+        <td>
+          1
+        </td>
+        <td>
+          1
+        </td>
+      </tr>
+      <tr>
+        <td>
+          1
+        </td>
+        <td>
+          1
+        </td>
+        <td>
+          0
+        </td>
+      </tr>
+    </table>
+  </br>
+    Error rate: <span id="error-rate"></span></br>
+    Time (ms): <span id="time"></span></br>
+    <button type="button" id="train">Train</button>
+  </br>
+  </br>
+    Input 1: <input type="text" id="input1"/><br/>
+    Input 2: <input type="text" id="input2"/><br/>
+    <button type="button" id="activate">Activate!</button>
+  </br>
+  </br>
+  Output: <span id="output"></span>
+  </body>
+</html>

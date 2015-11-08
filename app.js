@@ -51,12 +51,21 @@ mongoose.connection.on('error', function() {
   process.exit(1);
 });
 
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+    next();
+}
+
 /**
  * Express configuration.
  */
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+app.use(allowCrossDomain);
 app.use(compress());
 app.use(sass({
   src: path.join(__dirname, 'public'),
@@ -175,6 +184,20 @@ app.get('/auth/venmo/callback', passport.authorize('venmo', { failureRedirect: '
  * Error Handler.
  */
 app.use(errorHandler());
+
+app.get('*', function(req, res, next) {
+  var err = new Error();
+  err.status = 404;
+  next(err);
+});
+
+app.use(function(err, req, res, next) {
+  if(err.status !== 404) {
+    return next();
+  }
+
+  res.render('404', { status: 404 });
+});
 
 /**
  * Start Express server.

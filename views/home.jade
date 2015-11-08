@@ -1,13 +1,12 @@
 extends layout
 
 block content
-  h1 Neuromancer
-  .row
-    .col-lg-11
-      p.lead Neural Networks as a Service
-    .col-lg-1
-      button.btn.btn-success.pull-right(type='button', target="_blank", onclick="location.href='/login';") Get Started
-  hr
+  .jumbotron
+    .container
+      h1 Neuromancer
+      p Neuromancer is a service that offers neural networks and machine learning algorithms packaged in an easy to use REST API.
+      p
+        a(class="btn btn-success btn-lg", href="#", role="button", onclick="location.href='/login';") Get Started
   .row
     .col-sm-6
       h2 Explanation of our service.

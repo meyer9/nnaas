@@ -101,19 +101,21 @@ exports.trainNetwork = function (req, res) {
 	var apiKey = req.body.apiKey;
 	var query = Network.where({apiKey: apiKey});
 	query.findOne(function (err, networkObj){
-		if (err) {
+		if (networkObj == null) {
+			res.sendStatus(400);
+		} else if (err) {
 			res.sendStatus(403);
 		}
 		else {
-			console.log(apiKey);
 			networkObj.network = Synaptic.Network.fromJSON(networkObj.network);
 			var trainingSet = req.body.trainingSet;
-			var options = req.body.options;
+			var options = req.body.options || {};
 			var trainer = new Synaptic.Trainer(networkObj.network, options);
 			var out = trainer.train(trainingSet);
+			console.log(out);
 			networkObj.network = networkObj.network.toJSON();
 			networkObj.save();
-			res.send(out);
+			res.json(out);
 		}
 	});
 }
