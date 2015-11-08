@@ -12,8 +12,6 @@
   "dependencies": {
     "async": "^1.5.0",
     "bcrypt-nodejs": "^0.0.3",
-    "bitcore": "^2.0.0",
-    "bitcore-explorers": "^1.0.1",
     "bitgo": "0.11.45",
     "body-parser": "^1.14.1",
     "cfenv": "1.0.3",
@@ -57,6 +55,7 @@
     "request": "^2.65.0",
     "serve-favicon": "^2.3.0",
     "stripe": "^4.0.0",
+    "synaptic": "^1.0.2",
     "tumblr.js": "^0.0.7",
     "twilio": "^2.5.2",
     "twit": "^2.1.1",
