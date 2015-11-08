@@ -6,34 +6,31 @@ block content
   form.form-horizontal(role='form', method='POST')
     input(type='hidden', name='_csrf', value=_csrf)
     .form-group
-      label(class='control-label', for='How many hidden layers', style='margin-right: 5px;')  Hidden Layers: 
-        input(type='number', name='hiddenLayers', min'1', max'5')
-      br
-      label(class='control-label', for='UserInput', style='margin-right: 5px;') Input: 
-          input(type='number', name='inputNeurons', min'1', max='10')
-      br
-      label(class='control-label', for='UserOutput', style='margin-right: 5px;') Output: 
-          input(type='number', name='outputNeurons', min'1', max='10')
-      br
-      label(class='control-label', for='Number of Neurons in hidden layer', style='margin-right: 5px;') Number of Neurons per Layer: 
-          input(type='number', name='neuronsInHiddenLayer', min'1', max='10')
-      br
-      label(class='control-label', for='What type of neuron', style='margin-right: 5px;') Neuron Type: 
+      label(class='control-label', for='hiddenLayers', style='margin-right: 5px;')  Hidden Layers:
+      input(class='form-control', type='number', name='hiddenLayers', min'1', max'5')
+    .form-group
+      label(class='control-label', for='inputNeurons', style='margin-right: 5px;') Input:
+      input(class='form-control', type='number', name='inputNeurons', min'1', max='10')
+    .form-group
+      label(class='control-label', for='outputNeurons', style='margin-right: 5px;') Output:
+      input(class='form-control', type='number', name='outputNeurons', min'1', max='10')
+    .form-group
+      label(class='control-label', for='neuronsInHiddenLayer', style='margin-right: 5px;') Number of Neurons per Layer:
+      input(class='form-control', type='number', name='neuronsInHiddenLayer', min'1', max='10')
+    .form-group
+      label(class='control-label', for='neuronType', style='margin-right: 5px;') Neuron Type:
       select(name='neuronType')
           option(value='Binary') Binary
           option(value='Logarithmic') Logarithmic
           option(value='Sigmoid') Sigmoid
-      br
-      br
-      label(class='control-label', for='What type of neuron network', style='margin-right: 5px;') Neuron Network: 
+    .form-group
+      label(class='control-label', for='networkType', style='margin-right: 5px;') Neuron Network:
       select(name='networkType')
         option(value='feedforward') feedforward
         option(value='recurrent') recurrent
         option(value='Hopfield') Hopfield
-      br
-      br
-      label(class='control-label', for='What is neuron name', style='margin-right 5px;') Neuron Name: 
-        input(type='text', name='networkName')
-      br
-      br
-      input(type='submit')
+    .form-group
+      label(class='control-label', for='networkName', style='margin-right 5px;') Neuron Name:
+      input(class='form-control', type='text', name='networkName')
+    .form-group
+      button.btn.btn-primary(type='button') Add Network

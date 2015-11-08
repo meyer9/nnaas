@@ -56,7 +56,25 @@ exports.getNetworks = function (req, res) {
 			res.json(networks);
 		} 
 		else {
-			res.sendStatus(err);
+			res.sendStatus(403);
 		}
 	});
 }
+
+/**
+* POST /networks/delete
+* deletes a network
+*/
+exports.deleteNetwork = function (req, res) {
+	var networkID = req.body.networkID;
+	Network.findOneAndRemove({_id: networkID}, function (err) {
+		if (err) {
+			res.sendStatus(403);
+		}
+		else {
+			res.send("Deleted!");
+		}
+	});
+
+}
+
