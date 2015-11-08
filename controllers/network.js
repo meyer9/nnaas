@@ -41,7 +41,7 @@ exports.postNewNetwork = function (req, res) {
 */
 exports.getNewNetwork = function (req, res) {
 	res.render('input',{
-		title: 'input'
+		title: 'Create New Network'
 	});
 }
 
@@ -88,7 +88,7 @@ exports.deleteNetwork = function (req, res) {
 */
 exports.showNetworks = function(req, res) {
 	res.render('networks',{
-		title: 'networks'
+		title: 'Your Networks'
 	});
 };
 
