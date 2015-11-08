@@ -111,3 +111,22 @@ exports.trainNetwork = function (req, res) {
 		}
 	});
 }
+
+/**
+* POST networks/activate
+* activates a network and runs an input through it
+*/
+exports.activateNetwork = function (req,res) {
+	var apiKey = req.body.apiKey;
+	var query = Network.where({apiKey: apiKey});
+	query.findOne(function (err, network){
+		if (err) {
+			res.sendStatus(403);
+		}
+		else {
+			var inputs = req.body.inputs;
+			var outputs = network.activate(inputs);
+			res.send(outputs);
+		}
+	});
+}

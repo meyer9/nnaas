@@ -117,6 +117,7 @@ app.get('/networks/json',networkController.getNetworks);
 app.post('/networks/delete', networkController.deleteNetwork);
 app.get('/networks', networkController.showNetworks);
 app.post('/networks/train',networkController.trainNetwork);
+app.post('/networks/activate',networkController.activateNetwork);
 
 /**
  * API examples routes.
