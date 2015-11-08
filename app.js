@@ -120,7 +120,7 @@ app.get('/input', contactController.inputNeuralNet);
 /**
  * API examples routes.
  */
-app.get('/api', apiController.getApi);
+// app.get('/api', apiController.getApi);
 
 
 /**
