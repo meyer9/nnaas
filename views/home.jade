@@ -1,37 +1,15 @@
 extends layout
 
-block content 
+block content
   h1 NNaaS
   p.lead Neural Networks as a Service
-        button.btn.btn-primary(type='button', style='margin-left: 1040px;', target="_blank", onclick="location.href='input';") + Add Input
   hr
   .row
     .col-sm-6
-
-          h2 Explanation of our service.
-          p We create user-taylored neural networks to solve a variety of problems involving big data. You can simply create a neural net suited for your own needs by adding input parameters. From facial recognition to data analysis, NNaaS is the service for you!
-          p       
-        .col-sm-6
-          h2 What are neural networks?
-          p Neural networks are an intuitive way to solve complex and dynamic problems. They are usually implemented when simple algorithms cannot be used. They function similarly to the networks of neurons in a brain. Each neuron gets input from many neurons and outputs values to others. To train a network to fit a certain output, many input and expected outputs are provided. The network actively learns how to mimic expected outputs by changing the strength of connections between neurons. When completely trained, a neural net can successfully predict an output given novel input values.
-          p
-  
-  .container
-    h2 Hover Rows
-    table.table.table-hover
-      thead
-        tr
-          th Name
-          th API key
-          th Delete Row
-      tbody
-        tr
-          td Kayleigh (Master)
-          td Fu
-          td
-            input(type='button', value='Delete', onclick='deleteRow(this)')
-        tr
-          td Slave A
-          td Slave B
-          td
-            input(type='button', value='Delete', onclick='deleteRow(this)')
+      h2 Explanation of our service.
+      p We create user-tailored neural networks to solve a variety of problems involving big data. You can simply create a neural net suited for your own needs by adding input parameters. From facial recognition to data analysis, Neuromancer is the service for you!
+      p
+    .col-sm-6
+      h2 What are neural networks?
+      p Neural networks are an intuitive way to solve complex and dynamic problems. They are usually implemented when simple algorithms cannot be used. They function similarly to the networks of neurons in a brain. Each neuron gets input from many neurons and outputs values to others. To train a network to fit a certain output, many input and expected outputs are provided. The network actively learns how to mimic expected outputs by changing the strength of connections between neurons. When completely trained, a neural net can successfully predict an output given novel input values.
+      button.btn.btn-success.pull-right(type='button', target="_blank", onclick="location.href='login';") Get Started
