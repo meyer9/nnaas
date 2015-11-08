@@ -7,16 +7,16 @@ block content
     input(type='hidden', name='_csrf', value=_csrf)
     .form-group
       label(class='control-label', for='hiddenLayers', style='margin-right: 5px;')  Hidden Layers:
-      input(class='form-control', type='number', name='hiddenLayers', min'1', max'5')
+      input(class='form-control', type='number', name='hiddenLayers', min='1', max='5')
     .form-group
       label(class='control-label', for='inputNeurons', style='margin-right: 5px;') Input:
-      input(class='form-control', type='number', name='inputNeurons', min'1', max='10')
+      input(class='form-control', type='number', name='inputNeurons', min='1', max='10')
     .form-group
       label(class='control-label', for='outputNeurons', style='margin-right: 5px;') Output:
-      input(class='form-control', type='number', name='outputNeurons', min'1', max='10')
+      input(class='form-control', type='number', name='outputNeurons', min='1', max='10')
     .form-group
       label(class='control-label', for='neuronsInHiddenLayer', style='margin-right: 5px;') Number of Neurons per Layer:
-      input(class='form-control', type='number', name='neuronsInHiddenLayer', min'1', max='10')
+      input(class='form-control', type='number', name='neuronsInHiddenLayer', min='1', max='10')
     .form-group
       label(class='control-label', for='neuronType', style='margin-right: 5px;') Neuron Type:
       select(name='neuronType')
@@ -26,8 +26,8 @@ block content
     .form-group
       label(class='control-label', for='networkType', style='margin-right: 5px;') Neuron Network:
       select(name='networkType')
-        option(value='feedforward') feedforward
-        option(value='recurrent') recurrent
+        option(value='feedforward') Feed Forward
+        option(value='recurrent') Recurrent
         option(value='Hopfield') Hopfield
     .form-group
       label(class='control-label', for='networkName', style='margin-right 5px;') Neuron Name:

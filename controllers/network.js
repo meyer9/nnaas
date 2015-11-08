@@ -133,3 +133,23 @@ exports.activateNetwork = function (req,res) {
 		}
 	});
 }
+
+/**
+* POST /networks/test
+* tests a network
+*/
+exports.testNetwork = function (req, res) {
+	var apiKey = req.body.apiKey;
+	var query = Network.where({apiKey: apiKey});
+	query.findOne(function (err, network){
+		if (err) {
+			res.sendStatus(403);
+		}
+		else {
+			var testSet = req.body.testSet;
+			var trainer = Synapse.trainer(network);
+			var results = trainer.test(testSet);
+			res.send(results);
+		}
+	});
+}
