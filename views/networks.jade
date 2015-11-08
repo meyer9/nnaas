@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  .container
+    .row
+      .col-lg-11
+        h2 Your Networks
+      .col-lg-1
+        button.btn.btn-primary.pull-right(type='button', style='display: inline;') Add Network
+    table.table.table-hover
+      thead
+        tr
+          th Name
+          th API key
+          th Delete Network
+      tbody
+        tr
+          td Kayleigh (Master)
+          td Fu
+          td
+            button.btn.btn-danger(type='button') Delete
+        tr
+          td Slave A
+          td Slave B
+          td
+            button.btn.btn-danger(type='button') Delete

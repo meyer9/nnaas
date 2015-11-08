@@ -120,6 +120,7 @@ app.get('/input', networkController.getNewNetwork);
 app.post('/input', networkController.postNewNetwork);
 app.get('/networks/json',networkController.getNetworks);
 app.post('/networks/delete', networkController.deleteNetwork);
+app.get('/networks', networkController.showNetworks);
 
 /**
  * API examples routes.
