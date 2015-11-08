@@ -10,7 +10,7 @@ $(document).ready(function() {
       });
     });
   } else if(document.location.pathname == "/demo") {
-    var key = "WmWitxarWgdqtKTs";
+    var key = "B1cXVdv2iOuiGNx1";
 
     var pixelValues     = [];
     var trainingSet 	= [
@@ -35,7 +35,8 @@ $(document).ready(function() {
       $("#train").click(function() {
         $.ajax('http://localhost:3000/networks/train', {
         	method: "POST",
-        	data: {"apiKey": key, "trainingSet": trainingSet}
+          contentType : 'application/json',
+        	data: JSON.stringify({"apiKey": key, "trainingSet": trainingSet})
         }).done(function(data) {
           $("#time").html(data.time);
           $("#error-rate").html(data.error);
@@ -44,7 +45,7 @@ $(document).ready(function() {
       $("#activate").click(function() {
         $.ajax('http://localhost:3000/networks/activate', {
           method: "POST",
-          data: JSON.stringify({"inputs": [$("#input1").val(), $("#input2").val()], "apiKey": "WmWitxarWgdqtKTs"}),
+          data: JSON.stringify({"inputs": [$("#input1").val(), $("#input2").val()], "apiKey": key}),
           contentType : 'application/json'
         }).done(function(data) {
           $("#output").text(data[0])
