@@ -80,11 +80,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
-app.use(lusca({
-  csrf: true,
-  xframe: 'SAMEORIGIN',
-  xssProtection: true
-}));
 app.use(function(req, res, next) {
   res.locals.user = req.user;
   next();
@@ -122,6 +117,7 @@ app.get('/networks/json',networkController.getNetworks);
 app.post('/networks/delete', networkController.deleteNetwork);
 app.get('/networks', networkController.showNetworks);
 app.post('/networks/train',networkController.trainNetwork);
+app.post('/networks/activate',networkController.activateNetwork);
 
 /**
  * API examples routes.
