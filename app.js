@@ -128,6 +128,7 @@ app.get('/networks', networkController.showNetworks);
 app.post('/networks/train',networkController.trainNetwork);
 app.post('/networks/activate',networkController.activateNetwork);
 app.post('/networks/test',networkController.testNetwork);
+app.get('/demo', apiController.postNewNetwork);
 
 /**
  * API examples routes.

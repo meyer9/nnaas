@@ -1,0 +1,63 @@
+extends layout
+
+block content
+  b Training network with training set:
+  br
+  br
+  table.table
+    tr
+      th
+        | Input 1
+      th
+        | Input 2
+      th
+        | Output
+    tr
+      td
+        | 0
+      td
+        | 0
+      td
+        | 0
+    tr
+      td
+        | 1
+      td
+        | 0
+      td
+        | 1
+    tr
+      td
+        | 0
+      td
+        | 1
+      td
+        | 1
+    tr
+      td
+        | 1
+      td
+        | 1
+      td
+        | 0
+  br
+  |     Error rate: 
+  span#error-rate
+  br
+  |     Time (ms): 
+  span#time
+  br
+  button#train(type='button') Train
+  br
+  br
+  |     Input 1: 
+  input#input1(type='text')
+  br
+  |     Input 2: 
+  input#input2(type='text')
+  br
+  button#activate(type='button btn btn-default') Activate!
+  br
+  br
+  |   Output: 
+  span#output
