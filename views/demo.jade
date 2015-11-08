@@ -41,23 +41,27 @@ block content
       td
         | 0
   br
-  |     Error rate: 
-  span#error-rate
+  .panel.panel-default
+    .panel-heading Training
+    .panel-body
+      b(style="margin-bottom: 5px; padding: 0px;") Error rate: 
+      span#error-rate 0
+      br
+      b(style="margin-bottom: 5px; padding: 0px;") Time (ms): 
+      span#time 0
+      hr
+      button#train.btn.btn-info(type='button') Train
+  .panel.panel-default
+    .panel-heading Activation
+    .panel-body
+      label(for="input1", style="margin-right: 5px;") Input 1: 
+      input#input1(name="input1",type='text', value='0')
+      br
+      label(for="input1", style="margin-right: 5px;") Input 2: 
+      input#input2(name="input2",type='text', value='0')
+      br
+      p(style="margin-top:5px;")   Output: 
+        span#output 0
+      button#activate.btn.btn-info(type='button') Activate
   br
-  |     Time (ms): 
-  span#time
   br
-  button#train(type='button') Train
-  br
-  br
-  |     Input 1: 
-  input#input1(type='text')
-  br
-  |     Input 2: 
-  input#input2(type='text')
-  br
-  button#activate(type='button btn btn-default') Activate!
-  br
-  br
-  |   Output: 
-  span#output
