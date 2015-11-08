@@ -7,8 +7,10 @@ var networkSchema = new Schema({
 	network: {
 		neurons: [synaptic.Neuron],
 		connections: [synaptic.Connection]
-	}
+	},
+	name: String
 });
 
+module.exports = mongoose.model('Network', networkSchema);
 
 
