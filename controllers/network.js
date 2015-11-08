@@ -107,10 +107,11 @@ exports.trainNetwork = function (req, res) {
 		else {
 			networkObj.network = Synaptic.Network.fromJSON(networkObj.network);
 			var trainingSet = req.body.trainingSet;
-			var trainer = new Synaptic.Trainer(networkObj.network);
-			trainer.train(trainingSet);
+			var options = req.body.options;
+			var trainer = new Synaptic.Trainer(networkObj.network, options);
+			var out = trainer.XOR();
 			networkObj.save();
-			res.send("SUCCESS!");
+			res.send(out);
 		}
 	});
 }
@@ -122,13 +123,14 @@ exports.trainNetwork = function (req, res) {
 exports.activateNetwork = function (req,res) {
 	var apiKey = req.body.apiKey;
 	var query = Network.where({apiKey: apiKey});
-	query.findOne(function (err, network){
+	query.findOne(function (err, networkObj){
 		if (err) {
 			res.sendStatus(403);
 		}
 		else {
+			networkObj.network = Synaptic.Network.fromJSON(networkObj.network);
 			var inputs = req.body.inputs;
-			var outputs = network.activate(inputs);
+			var outputs = networkObj.network.activate(inputs);
 			res.send(outputs);
 		}
 	});
@@ -141,13 +143,14 @@ exports.activateNetwork = function (req,res) {
 exports.testNetwork = function (req, res) {
 	var apiKey = req.body.apiKey;
 	var query = Network.where({apiKey: apiKey});
-	query.findOne(function (err, network){
+	query.findOne(function (err, networkObj){
 		if (err) {
 			res.sendStatus(403);
 		}
 		else {
+			networkObj.network = Synaptic.Network.fromJSON(networkObj.network);
 			var testSet = req.body.testSet;
-			var trainer = Synapse.trainer(network);
+			var trainer = new Synaptic.Trainer(networkObj.network);
 			var results = trainer.test(testSet);
 			res.send(results);
 		}
