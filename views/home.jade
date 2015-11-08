@@ -2,7 +2,11 @@ extends layout
 
 block content
   h1 Neuromancer
-  p.lead Neural Networks as a Service
+  .row
+    .col-lg-11
+      p.lead Neural Networks as a Service
+    .col-lg-1
+      button.btn.btn-success.pull-right(type='button', target="_blank", onclick="location.href='/login';") Get Started
   hr
   .row
     .col-sm-6
@@ -12,4 +16,3 @@ block content
     .col-sm-6
       h2 What are neural networks?
       p Neural networks are an intuitive way to solve complex and dynamic problems. They are usually implemented when simple algorithms cannot be used. They function similarly to the networks of neurons in a brain. Each neuron gets input from many neurons and outputs values to others. To train a network to fit a certain output, many input and expected outputs are provided. The network actively learns how to mimic expected outputs by changing the strength of connections between neurons. When completely trained, a neural net can successfully predict an output given novel input values.
-      button.btn.btn-success.pull-right(type='button', target="_blank", onclick="location.href='login';") Get Started
