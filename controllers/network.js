@@ -1,32 +1,38 @@
 var Network = require('../models/Network');
 var createNetwork = require('../NeuralNet.js');
+var util = require('../util.js');
 
 /**
 * POST /input
 * Adds a new network to the db 
 */
 exports.postNewNetwork = function (req, res) {
-	var hiddenLayers = req.body.hiddenLayers;
-	var inputNeurons = req.body.inputNeurons;
-	var outputNeurons = req.body.outputNeurons;
-	var neuronType = req.body.neuronType;
-	var networkType = req.body.networkType;
-	var networkName = req.body.networkName;
-	var neuronsInHiddenLayer = req.body.neuronsInHiddenLayer;
-	var userId = req.user.id;
+	if (req.user) {
+		var hiddenLayers = req.body.hiddenLayers;
+		var inputNeurons = req.body.inputNeurons;
+		var outputNeurons = req.body.outputNeurons;
+		var neuronType = req.body.neuronType;
+		var networkType = req.body.networkType;
+		var networkName = req.body.networkName;
+		var neuronsInHiddenLayer = req.body.neuronsInHiddenLayer;
+		var userId = req.user.id;
 
-	var neuralNetwork = createNetwork(inputNeurons,neuronsInHiddenLayer,outputNeurons,hiddenLayers);
+		var neuralNetwork = createNetwork(inputNeurons,neuronsInHiddenLayer,outputNeurons,hiddenLayers);
 
-	var network = new Network({
-		apiKey: getAPIKey(16),
-		network: neuralNetwork.toJSON(),
-		name: networkName,
-		userId: userId
-	});
+		var network = new Network({
+			apiKey: util.getAPIKey(16),
+			network: neuralNetwork.toJSON(),
+			name: networkName,
+			userId: userId
+		});
 
-	network.save();
+		network.save();
 
-	res.send(network);
+		res.redirect("/networks");
+	}
+	else {
+		res.sendStatus(403);
+	}
 }
 
 /**
@@ -39,11 +45,18 @@ exports.getNewNetwork = function (req, res) {
 	});
 }
 
-var getAPIKey = function (length) {
-	possible = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-	key = ""
-	for (var i = 0; i < length; i++) {
-		key += possible.charAt(Math.floor(Math.random() * possible.length));
-	}
-	return key;
+/**
+* GET /networks
+* shows networks of user in a table
+*/
+exports.getNetworks = function (req, res) {
+	var userid = req.user.id;
+	Network.find({userId: userid}, function (err, networks) {
+		if (!err) {
+			res.json(networks);
+		} 
+		else {
+			res.sendStatus(err);
+		}
+	});
 }
