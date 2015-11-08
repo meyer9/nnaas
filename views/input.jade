@@ -2,24 +2,36 @@ extends layout
 
 block content
   .page-header
-    h3 Contact Form
+    h3 User Input
 
   form.form-horizontal(role='form', method='POST')
     input(type='hidden', name='_csrf', value=_csrf)
     .form-group
-      label(class='col-sm-2 control-label', for='name') Name
-      .col-sm-8
-        input.form-control(type='text', name='name', id='name', autofocus=true)
-    .form-group
-      label(class='col-sm-2 control-label', for='email') Email
-      .col-sm-8
-        input.form-control(type='text', name='email', id='email')
-    .form-group
-      label(class='col-sm-2 control-label', for='message') Body
-      .col-sm-8
-        textarea.form-control(type='text', name='message', id='message', rows='7')
-    .form-group
-      .col-sm-offset-2.col-sm-8
-        button.btn.btn-primary(type='submit')
-          i.fa.fa-envelope
-          | Send
+      label(class='control-label', for='How many hidden layers', style='margin-right: 5px;')  Hidden Layers: 
+        input(type='number', name='hiddenLayers', min'1', max'5')
+      br
+      label(class='control-label', for='UserInput', style='margin-right: 5px;') Input: 
+          input(type='number', name='inputNeurons', min'1', max='10')
+      br
+      label(class='control-label', for='UserOutput', style='margin-rigth: 5px;') Output: 
+          input(type='number', name='outputNeurons', min'1', max='10')
+      br
+      label(class='control-label', for='What type of neuron', style='margin-right: 5px;') Neuron Type:
+      select(name='neuronType')
+          option(value='Binary') Binary
+          option(value='Logarithmic') Logarithmic
+          option(value='Sigmoid') Sigmoid
+      br
+      br
+      label(class='control-label', for='What type of neuron network', style='margin-right: 5px;') Neuron Network: 
+      select(name='networkType')
+        option(value='feedforward') feedforward
+        option(value='recurrent') recurrent
+        option(value='Hopfield') Hopfield
+      br
+      br
+      label(class='control-label', for='What is neuron name', style='margin-right 5px;') Neuron Name: 
+        input(type='networkName', name=)
+      br
+      br
+      input(type='submit')
