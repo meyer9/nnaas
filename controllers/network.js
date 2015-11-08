@@ -83,7 +83,9 @@ exports.deleteNetwork = function (req, res) {
 
 }
 
-
+/*
+* Renders networks page
+*/
 exports.showNetworks = function(req, res) {
 	res.render('networks',{
 		title: 'networks'
