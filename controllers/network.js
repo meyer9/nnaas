@@ -50,15 +50,20 @@ exports.getNewNetwork = function (req, res) {
 * shows json of networks of user in a table
 */
 exports.getNetworks = function (req, res) {
-	var userid = req.user.id;
-	Network.find({userId: userid}, function (err, networks) {
-		if (!err) {
-			res.json(networks);
-		}
-		else {
-			res.sendStatus(403);
-		}
-	});
+	if (req.user) {
+		var userid = req.user.id;
+		Network.find({userId: userid}, function (err, networks) {
+			if (!err) {
+				res.json(networks);
+			}
+			else {
+				res.sendStatus(403);
+			}
+		});
+	}
+	else {
+		res.sendStatus(403);
+	}
 }
 
 /**
@@ -84,3 +89,23 @@ exports.showNetworks = function(req, res) {
 		title: 'networks'
 	});
 };
+
+/**
+* POST /networks/train
+* trains a network
+*/
+exports.trainNetwork = function (req, res) {
+	var apiKey = req.body.apiKey;
+	var query = Network.where({apiKey: apiKey});
+	query.findOne(function (err, network){
+		if (err) {
+			res.sendStatus(403);
+		}
+		else {
+			var trainingSet = req.body.trainingSet;
+			var trainer = Synapse.trainer(network);
+			trainer.train(trainingSet);
+			network.save();
+		}
+	});
+}
